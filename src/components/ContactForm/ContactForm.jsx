@@ -1,10 +1,9 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import styles from './ContactForm.module.css';
 import { useId } from 'react';
-import { nanoid } from 'nanoid';
 import { PhoneSchema } from './PhoneSchema';
-import { addContact } from '../../redux/contactsSlice';
 import { useDispatch } from 'react-redux';
+import { addContact } from '../../redux/contactsOps';
 
 export default function ContactForm() {
   const dispatch = useDispatch();
@@ -19,7 +18,6 @@ export default function ContactForm() {
   const handleSubmit = (event, { resetForm }) => {
     dispatch(
       addContact({
-        id: nanoid(),
         name: event.username,
         number: event.phoneNumber,
       }),
